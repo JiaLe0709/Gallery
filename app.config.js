@@ -11,7 +11,7 @@ const app = {
         provider: 'umami', // Currently Only Support Umami, please fill with 'umami' or leave it empty to disable it.
         umamiConfig: {
             scriptUrl: 'https://umami-jiale.vercel.app/script.js', // The url of your Umami script
-            websiteId: 'cd68652d-95e8-4bb5-8ec9-82543390a6da' // The website id of your Umami instance
+            websiteId: 'f79bd816-0f5a-4a46-8124-8d6b6bfd269a' // The website id of your Umami instance
         }
     },
     isProd: process.env.VERCEL_ENV === 'production'
