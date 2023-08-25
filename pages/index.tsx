@@ -59,7 +59,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
               className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
             >
               <Image
-                alt="Next.js Conf photo"
+                alt={`${app.title} Images`}
                 className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
                 style={{ transform: 'translate3d(0, 0, 0)' }}
                 placeholder="blur"
@@ -101,40 +101,23 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   )
 }
 
-export default Home
-
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const results = await cloudinary.v2.search
     .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
     .sort_by('public_id', 'desc')
     .max_results(400)
     .execute()
-  let reducedResults: ImageProps[] = []
 
-  let i = 0
-  for (let result of results.resources) {
-    reducedResults.push({
-      id: i,
-      height: result.height,
-      width: result.width,
-      public_id: result.public_id,
-      format: result.format,
-    })
-    i++
-  }
-
-  const blurImagePromises = results.resources.map((image: ImageProps) => {
-    return getBase64ImageUrl(image)
-  })
-  const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
-
-  for (let i = 0; i < reducedResults.length; i++) {
-    reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
-  }
+  const imagesWithBlurDataUrls = await Promise.all(results.resources.map(async (image: ImageProps) => {
+    const blurDataUrl = await getBase64ImageUrl(image);
+    return { ...image, blurDataUrl };
+  }));
 
   return {
     props: {
-      images: reducedResults,
+      images: imagesWithBlurDataUrls,
     },
-  }
+  };
 }
+
+export default Home;
