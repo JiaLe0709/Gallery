@@ -121,14 +121,18 @@ export async function getServerSideProps() {
     i++
   }
 
-  const imagesWithBlurDataUrls = await Promise.all(results.resources.map(async (image: ImageProps) => {
-    const blurDataUrl = await getBase64ImageUrl(image);
-    return { ...image, blurDataUrl };
-  }));
+  const blurImagePromises = results.resources.map((image: ImageProps) => {
+    return getBase64ImageUrl(image)
+  })
+  const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
+
+  for (let i = 0; i < reducedResults.length; i++) {
+    reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
+  }
 
   return {
     props: {
-      images: imagesWithBlurDataUrls,
+      images: reducedResults,
     },
   }
 }
