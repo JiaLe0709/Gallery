@@ -14,6 +14,7 @@ import { variants } from '../utils/animationVariants'
 import downloadPhoto from '../utils/downloadPhoto'
 import { range } from '../utils/range'
 import type { ImageProps, SharedModalProps } from '../utils/types'
+import app from '../app.config'
 
 export default function SharedModal({
   index,
@@ -79,7 +80,7 @@ export default function SharedModal({
                   width={navigation ? 1280 : 1920}
                   height={navigation ? 853 : 1280}
                   priority
-                  alt="Next.js Conf image"
+                  alt={`${app.title} Images`}
                   onLoadingComplete={() => setLoaded(true)}
                 />
               </motion.div>
