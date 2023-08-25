@@ -27,15 +27,15 @@ const Home: NextPage = ({ currentPhoto }: { currentPhoto: ImageProps }) => {
       </main>
     </>
   );
-};
+}
 
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const results = await getResults();
+  const results = await getResults()
 
-  let reducedResults: ImageProps[] = [];
-  let i = 0;
+  let reducedResults: ImageProps[] = []
+  let i = 0
   for (let result of results.resources) {
     reducedResults.push({
       id: i,
@@ -43,18 +43,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       width: result.width,
       public_id: result.public_id,
       format: result.format,
-    });
-    i++;
+    })
+    i++
   }
 
   const currentPhoto = reducedResults.find(
-    (img) => img.id === Number(context.params.photoId)
-  );
-  currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto);
+    (img) => img.id === Number(context.query.photoId)
+  )
+  currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
 
   return {
     props: {
       currentPhoto: currentPhoto,
     },
-  };
-};
+  }
+}
