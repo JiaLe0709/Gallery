@@ -107,6 +107,19 @@ export async function getServerSideProps() {
     .sort_by('public_id', 'desc')
     .max_results(400)
     .execute()
+  let reducedResults: ImageProps[] = []
+
+  let i = 0
+  for (let result of results.resources) {
+    reducedResults.push({
+      id: i,
+      height: result.height,
+      width: result.width,
+      public_id: result.public_id,
+      format: result.format,
+    })
+    i++
+  }
 
   const imagesWithBlurDataUrls = await Promise.all(results.resources.map(async (image: ImageProps) => {
     const blurDataUrl = await getBase64ImageUrl(image);
@@ -117,7 +130,7 @@ export async function getServerSideProps() {
     props: {
       images: imagesWithBlurDataUrls,
     },
-  };
+  }
 }
 
 export default Home;

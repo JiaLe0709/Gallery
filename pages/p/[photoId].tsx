@@ -8,15 +8,10 @@ import getBase64ImageUrl from '../../utils/generateBlurPlaceholder'
 import type { ImageProps } from '../../utils/types'
 import app from '../../app.config'
 
-const Home: NextPage = ({ currentPhoto }: { currentPhoto: ImageProps | undefined }) => {
+const Home: NextPage = ({ currentPhoto }: { currentPhoto: ImageProps }) => {
   const router = useRouter()
   const { photoId } = router.query
   let index = Number(photoId)
-
-  if (!currentPhoto) {
-    // Handle case where currentPhoto is undefined, e.g., show loading or error message
-    return <div>Loading...</div>;
-  }
 
   const currentPhotoUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_2560/${currentPhoto.public_id}.${currentPhoto.format}`
 
@@ -55,13 +50,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const currentPhoto = reducedResults.find(
     (img) => img.id === Number(context.params.photoId)
   )
-
-  if (!currentPhoto) {
-    return {
-      notFound: true,
-    }
-  }
-
   currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto)
 
   return {
