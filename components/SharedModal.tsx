@@ -185,7 +185,7 @@ export default function SharedModal({
                       } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
                     >
                       <Image
-                        alt="small photos on the bottom"
+                        alt={`${app.title} Images`}
                         width={180}
                         height={120}
                         className={`${

@@ -4,6 +4,7 @@ import useKeypress from 'react-use-keypress'
 import type { ImageProps } from '../utils/types'
 import { useLastViewedPhoto } from '../utils/useLastViewedPhoto'
 import SharedModal from './SharedModal'
+import app from '../app.config'
 
 export default function Carousel({
   index,
@@ -37,7 +38,7 @@ export default function Carousel({
         <Image
           src={currentPhoto.blurDataUrl}
           className="pointer-events-none h-full w-full"
-          alt="blurred background"
+          alt={`${app.title} Images`}
           fill
           priority={true}
         />

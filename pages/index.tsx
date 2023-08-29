@@ -10,6 +10,7 @@ import getBase64ImageUrl from '../utils/generateBlurPlaceholder'
 import type { ImageProps } from '../utils/types'
 import { useLastViewedPhoto } from '../utils/useLastViewedPhoto'
 import app from '../app.config';
+// import { CldUploadWidget } from 'next-cloudinary';
 // import ts from '../package.json'
 
 /*
@@ -36,8 +37,22 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
       <Head>
         <title>{app.title}</title>
       </Head>
-      
+
+    
       <main className="mx-auto max-w-[1960px] p-4">
+        {/*<CldUploadWidget uploadPreset={app.Cloudinary.uploadPresent}>
+          {({ open }) => {
+            function handleOnClick(e) {
+              e.preventDefault();
+              open();
+            }
+            return (
+              <button className="button" onClick={handleOnClick}>
+                Upload an Image
+              </button>
+            );
+          }}
+        </CldUploadWidget>*/}
         {photoId && (
           <Modal
             images={images}
@@ -82,7 +97,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
           className="font-semibold hover:text-white"
           rel="noreferrer"
         >
-          {app.author}'s {app.usage}. 
+          {app.author}'s {app.usage}.
         </a>
         {' '}All rights reserved.
       </footer>

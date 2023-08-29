@@ -1,6 +1,6 @@
-# Artbook / Gallery app
+# Art Gallery / Gallery app
 
-This an image gallery / artbook site using Next.js, [Cloudinary](https://cloudinary.com), and [Tailwind](https://tailwindcss.com).
+This an image gallery / art gallery site using Next.js, [Cloudinary](https://cloudinary.com), and [Tailwind](https://tailwindcss.com).
 
 ## Deploy
 
@@ -32,6 +32,8 @@ Using [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/):
 ```bash
 yarn install
 ```
+
+If you don't have [Yarn](https://yarnpkg.com) click here to [Install Yarn](https://classic.yarnpkg.com/lang/en/docs/install/).
 
 ```bash
 yarn dev

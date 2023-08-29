@@ -31,6 +31,23 @@ class MyDocument extends Document {
               data-website-id={app.analytics.umamiConfig.websiteId}
             />
           )}
+          {app.analytics && app.analytics.provider === 'ga' && (
+            <>
+              <Script
+                src={`https://www.googletagmanager.com/gtag/js?id=${app.analytics.gaConfig.measurementId}`}
+              />
+              <Script strategy='lazyOnload' id='ga'>
+                {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${app.analytics.gaConfig.measurementId}', {
+                  page_path: window.location.pathname,
+                });
+                `}
+              </Script>
+            </>
+          )}
         </Head>
         <body className="bg-black antialiased">
           <Main />

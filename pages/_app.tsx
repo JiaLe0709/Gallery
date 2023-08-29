@@ -1,6 +1,10 @@
 import type { AppProps } from 'next/app'
 import '../styles/index.css'
+import '../styles/globals.css'
 import ts from '../package.json'
+import BirthdayBanner from '../components/Extra/BirthdayBanner'
+// import Navbar from '../components/Navbar/Header'
+// import app from '../app.config'
 
 const t = ts.version || "Unknown";
 
@@ -9,6 +13,10 @@ console.log(`🚧 If Got Any Bugs or Issues, You can always submit a new issues.
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Component {...pageProps} />
+    <>
+    <BirthdayBanner/>
+      {/*<Navbar navBarTitle={app.title} fullWidth={undefined} />*/}
+      <Component {...pageProps} />
+    </>
   )
 }
