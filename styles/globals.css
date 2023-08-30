@@ -5,3 +5,31 @@
 * {
     color: white
 }
+
+html {
+    --scrollbarBG: #ffffff00;
+    --thumbBG: #b8b8b8;
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
+html::-webkit-scrollbar {
+    width: 5px;
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG);
+}
+
+::selection {
+    background: rgba(45, 170, 219, 0.3);
+}

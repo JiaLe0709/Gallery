@@ -1,9 +1,10 @@
 import type { AppProps } from 'next/app'
+import { NextUIProvider } from '@nextui-org/react'
 import '../styles/index.css'
 import '../styles/globals.css'
 import ts from '../package.json'
 import BirthdayBanner from '../components/Extra/BirthdayBanner'
-// import Navbar from '../components/Navbar/Header'
+import Navbar from '../components/Navbar/Nav'
 // import app from '../app.config'
 
 const t = ts.version || "Unknown";
@@ -15,8 +16,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
     <BirthdayBanner/>
-      {/*<Navbar navBarTitle={app.title} fullWidth={undefined} />*/}
+    <NextUIProvider>
+      <Navbar/>
       <Component {...pageProps} />
+    </NextUIProvider>
     </>
   )
 }

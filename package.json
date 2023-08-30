@@ -1,6 +1,6 @@
 {
   "name": "gallery",
-  "version": "v1.0.2",
+  "version": "v1.0.3",
   "homepage": "https://jiale0709.link",
   "license": "MIT",
   "repository": {
@@ -21,15 +21,18 @@
   "dependencies": {
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
+    "@nextui-org/react": "^2.1.7",
+    "@types/flat": "^5.0.2",
     "class-variance-authority": "^0.7.0",
     "cloudinary": "^1.32.0",
     "clsx": "^2.0.0",
     "eslint-config-next": "^13.0.1",
-    "framer-motion": "^7.6.4",
+    "framer-motion": "^10.16.1",
     "imagemin": "^8.0.1",
     "imagemin-jpegtran": "^7.0.0",
     "init": "^0.1.2",
     "lucide-react": "^0.270.0",
+    "md5": "^2.3.0",
     "next": "latest",
     "next-cloudinary": "^4.18.1",
     "react": "^18.2.0",
