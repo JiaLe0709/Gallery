@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    color: white
-}
-
 html {
     --scrollbarBG: #ffffff00;
     --thumbBG: #b8b8b8;

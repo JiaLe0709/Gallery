@@ -20,6 +20,9 @@ class MyDocument extends Document {
           <meta property="og:title" content={app.title} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={app.title} />
+          {app.pwa && (
+            <link rel="manifest" href="/manifest.json" />
+          )}
           <meta
             name="twitter:description"
             content={app.desc}

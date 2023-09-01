@@ -2,16 +2,23 @@ const app = {
     author: 'Jia Le', // Your name
     email: 'jle26531@gmail.com', // Your email account
     usage: 'Gallery', // use for title tag and footer you have to fill else it will become empty. Example: Gallery, Artbook
+    pwa: true, 
+    // Boolean: true / false . if true using pwa function (able to install app from browser by manifest.json)
+    // for manifest.json, you must config by edit manifest.json in 'public' folder
+    // For generate image can use pwa-image-genrator to generate,
+    // if you don't know how to do it you're welcome to msg me with email.
+    // manifest icon default folder path is './public/manifest-icon'
     displayBirthdayBanner: true, // Boolean : true / false
     birthdaydate: '2008-07-09', // format: year-month-day (year is your born year) Not forcing to fill (Only if you want to show the Birthday Banner) 
-    desc: '',
+    desc: 'A Magical Gallery.', // Describe your app
+    navbarMode: 'static', // 'static' or 'sticky' only, else error
     icon: '/favicon.ico', // path or link, if path remember add '/'
     socialLink: 'https://github.com/JiaLe0709', // Whatever Social Link You like
     useCustomTitle: false, // Boolean: true / false
     customTitle: '', // if useCustomTitle: true, If you didn't fill this it will be your current domain. Example: localhost:3000 , www.example.com
     autoCollapsedNavBar: false, // Boolean : true / false
     analytics: {
-        provider: 'umami', 
+        provider: 'umami', // Fill the provider from the table. ex: ga
         /* 
 
         * Currently Support Umami, Google Analytics
@@ -36,7 +43,7 @@ const app = {
     isProd: process.env.VERCEL_ENV === 'production'
 }
 
-// Title config
+// Title config (Don't modified here unless you change the full title display logic)
 if (app.useCustomTitle) {
     app.title = app.customTitle;
 } else {

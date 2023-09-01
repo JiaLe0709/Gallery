@@ -1,4 +1,5 @@
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
 import { NextUIProvider } from '@nextui-org/react'
 import '../styles/index.css'
 import '../styles/globals.css'
@@ -15,6 +16,9 @@ console.log(`🚧 If Got Any Bugs or Issues, You can always submit a new issues.
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+    <Head>
+      <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' />
+    </Head>
     <BirthdayBanner/>
     <NextUIProvider>
       <Navbar/>
