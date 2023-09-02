@@ -5,14 +5,11 @@ import app from '../app.config'
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en" className='dark'>
+      <Html lang="en">
         <Head>
           <link rel="icon" href={app.icon} />
-          <meta
-            name="description"
-            content={app.desc}
-          />
-          <meta property="og:site_name" content={app.domain} />
+          <meta name="description" content={app.desc} />
+          <meta property="og:site_name" content={app.title} />
           <meta
             property="og:description"
             content={app.desc}
@@ -52,7 +49,7 @@ class MyDocument extends Document {
             </>
           )}
         </Head>
-        <body className="bg-black antialiased">
+        <body className="min-h-screen bg-background font-sans antialiased">
           <Main />
           <NextScript />
         </body>

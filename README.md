@@ -1,6 +1,6 @@
 # Art Gallery / Gallery app
 
-This an image gallery / art gallery site using Next.js, [Cloudinary](https://cloudinary.com), and [Tailwind](https://tailwindcss.com).
+This an image gallery / art gallery site using Next.js, [Cloudinary](https://cloudinary.com), [Next-UI](https://nextui.org/), [Tailwind](https://tailwindcss.com) and more.
 
 ## Deploy
 

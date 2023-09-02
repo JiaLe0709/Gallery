@@ -9,7 +9,8 @@ const app = {
     // if you don't know how to do it you're welcome to msg me with email.
     // manifest icon default folder path is './public/manifest-icon'
     displayBirthdayBanner: true, // Boolean : true / false
-    birthdaydate: '2008-07-09', // format: year-month-day (year is your born year) Not forcing to fill (Only if you want to show the Birthday Banner) 
+    footer: true, // Boolean : true / false
+    birthdaydate: '2008-07-09', // format: year-month-day (year is your born year - for minus current year to get age) Not forcing to fill (Only if you want to show the Birthday Banner) 
     desc: 'A Magical Gallery.', // Describe your app
     icon: '/favicon.ico', // path or link, if path remember add '/'
     socialLink: 'https://github.com/JiaLe0709', // Whatever Social Link You like

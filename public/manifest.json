@@ -1,7 +1,6 @@
 {
-    "name": "Jia Le'sGallery",
+    "name": "Jia Le's Gallery",
     "manifest_version": 3,
-    "version": "15.08.23",
     "short_name": "Jia Le's Gallery",
     "start_url": "/",
     "author": "Jia Le",

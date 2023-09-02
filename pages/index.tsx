@@ -89,18 +89,21 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
           ))}
         </div>
       </main>
-      <footer className="p-6 text-center text-white/80 sm:p-12">
+      {app.footer && (
+        <footer className="p-6 text-center text-default-600">
         &copy; {new Date().getFullYear()}{' '}
         <a
           href={app.socialLink}
           target="_blank"
-          className="font-semibold hover:text-white"
+          className="font-semibold text-default-600"
           rel="noreferrer"
         >
           {app.author}'s {app.usage}.
         </a>
         {' '}All rights reserved.
       </footer>
+      )}
+      
     </>
   )
 }
