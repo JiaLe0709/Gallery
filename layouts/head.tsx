@@ -6,7 +6,6 @@ import Script from "next/script";
 export const Head = () => {
     return (
         <NextHead>
-            <title>{app.title}</title>
             <link rel="icon" href={app.icon} />
             <meta name="description" content={app.desc} />
             <meta property="og:site_name" content={app.title} />
