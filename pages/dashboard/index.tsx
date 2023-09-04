@@ -1,20 +1,24 @@
-import Head from "next/head";
-import Layout from "@/layouts/globals"
-import Updatemsg from "@/components/Update/updateMsg"
+import React from 'react';
+import Layout from '@/layouts/globals';
+import Updatemsg from '@/components/Update/updateMsg';
+import Login from '@/components/Auth/Login';
 
 const Dashboard = () => {
-  
+  const logged = true;
+
   return (
     <>
-    <Head>
-        <title>Dashboard</title>
-    </Head>
-    <Layout>
-        <Updatemsg/>
-    </Layout>
-    
+      {logged ? (
+        <Layout title="Dashboard">
+          <Updatemsg />
+        </Layout>
+      ) : (
+        <Layout title="Login">
+          <Login />
+        </Layout>
+      )}
     </>
-  )
-}
+  );
+};
 
 export default Dashboard;

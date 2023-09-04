@@ -2,7 +2,7 @@ const app = {
     author: 'Jia Le', // Your name
     email: 'jle26531@gmail.com', // Your email account
     usage: 'Gallery', // use for title tag and footer you have to fill else it will become empty. Example: Gallery, Artbook
-    pwa: true, 
+    pwa: true,
     // Boolean: true / false . if true using pwa function (able to install app from browser by manifest.json)
     // for manifest.json, you must config by edit manifest.json in 'public' folder
     // For generate image can use pwa-image-genrator to generate,
@@ -16,7 +16,18 @@ const app = {
     socialLink: 'https://github.com/JiaLe0709', // Whatever Social Link You like
     useCustomTitle: false, // Boolean: true / false
     customTitle: '', // if useCustomTitle: true, If you didn't fill this it will be your current domain. Example: localhost:3000 , www.example.com
-    autoCollapsedNavBar: false, // Boolean : true / false
+    navItems: [
+        {
+            label: "Home",
+            href: "/",
+        }
+    ],
+    navMenuItems: [
+        {
+            label: "Home",
+            href: "/",
+        }
+    ],
     analytics: {
         provider: 'umami', // Fill the provider from the table. ex: ga
         /* 

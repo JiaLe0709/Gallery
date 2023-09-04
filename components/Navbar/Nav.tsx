@@ -14,7 +14,7 @@ import {
 	NavbarMenuItem,
 } from "@nextui-org/react";
 import clsx from "clsx";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { link as linkStyles } from "@nextui-org/theme";
 import { ThemeSwitch } from "@/components/theme-switcher";
 import Logo from '../Common/Logo'
 import app from '../../app.config'
@@ -71,18 +71,20 @@ export default function Nav() {
 				</NavbarBrand>
 				<div className="hidden lg:flex gap-4 justify-start ml-2">
 
-					<NavbarItem key="">
-						<NextLink
-							className={
-
-								"data-[active=true]:text-primary data-[active=true]:font-medium"
-							}
-							color="foreground"
-							href="/"
-						>
-							Home
-						</NextLink>
-					</NavbarItem>
+				{app.navItems.map((item) => (
+						<NavbarItem key={item.href}>
+							<NextLink
+								className={clsx(
+									linkStyles({ color: "foreground" }),
+									"data-[active=true]:text-primary data-[active=true]:font-medium"
+								)}
+								color="foreground"
+								href={item.href}
+							>
+								{item.label}
+							</NextLink>
+						</NavbarItem>
+					))}
 
 				</div>
 			</NavbarContent>
@@ -128,16 +130,23 @@ export default function Nav() {
 			<NavbarMenu>
 				{searchInput}
 				<div className="mx-4 mt-2 flex flex-col gap-2">
-					<NavbarMenuItem key={`profile`}>
-						<Link
-							color={"primary"
-							}
-							href="#"
-							size="lg"
-						>
-							Home
-						</Link>
-					</NavbarMenuItem>
+				{app.navMenuItems.map((item, index) => (
+						<NavbarMenuItem key={`${item}-${index}`}>
+							<Link
+								color={
+									index === 0
+										? "primary"
+										: index === app.navMenuItems.length - 0
+										? "danger"
+										: "foreground"
+								}
+								href={item.href}
+								size="lg"
+							>
+								{item.label}
+							</Link>
+						</NavbarMenuItem>
+					))}
 				</div>
 			</NavbarMenu>
 		</NextUINavbar>

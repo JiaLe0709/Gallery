@@ -10,13 +10,8 @@ import getBase64ImageUrl from '../utils/generateBlurPlaceholder'
 import type { ImageProps } from '../utils/types'
 import { useLastViewedPhoto } from '../utils/useLastViewedPhoto'
 import app from '../app.config';
+import Layout from "@/layouts/globals"
 // import { CldUploadWidget } from 'next-cloudinary';
-// import ts from '../package.json'
-
-/*
-const t = ts.version || "Unknown";
-console.log(`%c Jia Le's Gallery %c ${t} %c https://github.com/JiaLe0709/Gallery`, "color: #fff; background: #5f5f5f", "color: #fff; background: #44CC11", "")
-*/
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   const router = useRouter()
@@ -34,25 +29,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
 
   return (
     <>
-      <Head>
-        <title>{app.title}</title>
-      </Head>
-
-    
-      <main className="mx-auto max-w-[1960px] p-4">
-        {/*<CldUploadWidget uploadPreset={app.Cloudinary.uploadPresent}>
-          {({ open }) => {
-            function handleOnClick(e) {
-              e.preventDefault();
-              open();
-            }
-            return (
-              <button className="button" onClick={handleOnClick}>
-                Upload an Image
-              </button>
-            );
-          }}
-        </CldUploadWidget>*/}
+      <Layout title="Home">
         {photoId && (
           <Modal
             images={images}
@@ -88,22 +65,35 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
             </Link>
           ))}
         </div>
-      </main>
-      {app.footer && (
-        <footer className="p-6 text-center text-default-600">
-        &copy; {new Date().getFullYear()}{' '}
-        <a
-          href={app.socialLink}
-          target="_blank"
-          className="font-semibold text-default-600"
-          rel="noreferrer"
-        >
-          {app.author}'s {app.usage}.
-        </a>
-        {' '}All rights reserved.
-      </footer>
-      )}
-      
+        {app.footer && (
+          <footer className="p-6 text-center text-default-600">
+            &copy; {new Date().getFullYear()}{' '}
+            <a
+              href={app.socialLink}
+              target="_blank"
+              className="font-semibold text-default-600"
+              rel="noreferrer"
+            >
+              {app.author}'s {app.usage}.
+            </a>
+            {' '}All rights reserved.
+          </footer>
+        )}
+      </Layout>
+
+      {/*<CldUploadWidget uploadPreset={app.Cloudinary.uploadPresent}>
+          {({ open }) => {
+            function handleOnClick(e) {
+              e.preventDefault();
+              open();
+            }
+            return (
+              <button className="button" onClick={handleOnClick}>
+                Upload an Image
+              </button>
+            );
+          }}
+        </CldUploadWidget>*/}
     </>
   )
 }
