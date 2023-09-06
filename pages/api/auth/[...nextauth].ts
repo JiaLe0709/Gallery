@@ -2,6 +2,10 @@ import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const authOptions: NextAuthOptions = {
+    secret: process.env.SECRET,
+    session: {
+        strategy: 'jwt'
+    },
     providers:[
         CredentialsProvider({
             type: 'credentials',
@@ -16,7 +20,7 @@ const authOptions: NextAuthOptions = {
                     return null;
                 }
 
-                return {id: '1234', username: 'admin'}
+                return {id: '1', username: 'admin'}
             },
         })
     ]
