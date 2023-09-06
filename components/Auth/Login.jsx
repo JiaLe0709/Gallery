@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Input } from "@nextui-org/react";
 import { useRouter } from 'next/router'
 import { signIn } from 'next-auth/react'
 
 export default function Login() {
   const router = useRouter()
+  const [submitting, setSubmitting] = useState(false)
   return (
     <>
       <Modal
@@ -15,10 +16,10 @@ export default function Login() {
         <ModalContent>
           <>
             <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
-            <form onSubmit={async (e) => { 
+            <form onSubmit={async (e) => {
               e.preventDefault()
-
-              const action = await signIn('credentials', {
+              setSubmitting(true)
+              await signIn('credentials', {
                 username: e.currentTarget.username.value,
                 password: e.currentTarget.password.value,
                 redirect: false,
@@ -49,10 +50,15 @@ export default function Login() {
               <ModalFooter>
                 <Button color="danger" variant="flat" onPress={() => router.push('/')}>
                   Close
-                </Button>
-                <Button color="primary" type="submit">
-                  Sign in
-                </Button>
+                </Button>{submitting ? (
+                  <Button color="primary" isLoading>
+                    Loading
+                  </Button>
+                ) : (
+                  <Button color="primary" type="submit">
+                    Sign in
+                  </Button>
+                )}
               </ModalFooter>
             </form>
           </>
