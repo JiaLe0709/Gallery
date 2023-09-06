@@ -1,6 +1,6 @@
 {
   "name": "gallery",
-  "version": "v1.0.7",
+  "version": "v1.0.8",
   "homepage": "https://github.com/JiaLe0709/Gallery.git",
   "license": "MIT",
   "repository": {
@@ -37,6 +37,7 @@
     "next-auth": "^4.23.1",
     "next-cloudinary": "^4.18.1",
     "next-themes": "^0.2.1",
+    "nprogress": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hooks-global-state": "^2.0.0",

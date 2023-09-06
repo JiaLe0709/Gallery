@@ -15,7 +15,7 @@ const authOptions: NextAuthOptions = {
                     password: string;
                 };
 
-                if (username !== 'admin' && password !== 'admin') {
+                if (username !== 'admin' || password !== 'admin') {
                     return null;
                 }
 

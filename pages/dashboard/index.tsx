@@ -1,24 +1,30 @@
-import React from 'react';
+import { useEffect } from "react";
+import Router from "next/router";
 import Layout from '@/layouts/globals';
-import Updatemsg from '@/components/Update/updateMsg';
-import Login from '@/components/Auth/Login';
+import { useSession } from "next-auth/react";
+import { Spinner } from "@nextui-org/react";
+import Dashboard from "@/components/Dashboard/IndexView"
 
-const Dashboard = () => {
-  const logged = true;
+const Protected = () => {
+  const { status, data } = useSession();
+
+  useEffect(() => {
+    if (status === "unauthenticated") Router.replace("/auth/login");
+  }, [status]);
+
+  if (status === "authenticated")
+    return (
+      <>
+        <Dashboard />
+      </>
+    );
 
   return (
-    <>
-      {logged ? (
-        <Layout title="Dashboard">
-          <Updatemsg />
-        </Layout>
-      ) : (
-        <Layout title="Login">
-          <Login />
-        </Layout>
-      )}
-    </>
+    <Layout title="Loading">
+      <Spinner label="Loading..."  labelColor="primary"  size="lg" color="primary"/>
+    </Layout> 
+    
   );
 };
 
-export default Dashboard;
+export default Protected;

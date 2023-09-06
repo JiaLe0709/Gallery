@@ -1,28 +1,44 @@
 import React from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Input } from "@nextui-org/react";
 import { useRouter } from 'next/router'
+import { signIn } from 'next-auth/react'
 
 export default function Login() {
   const router = useRouter()
   return (
     <>
-      <Modal 
-        isOpen={true} 
-        onOpenChange={() => router.push('/')}
+      <Modal
+        isOpen={true}
+        hideCloseButton={true}
         placement="center"
       >
         <ModalContent>
-            <>
-              <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
+          <>
+            <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
+            <form onSubmit={async (e) => { 
+              e.preventDefault()
+
+              const action = await signIn('credentials', {
+                username: e.currentTarget.username.value,
+                password: e.currentTarget.password.value,
+                redirect: false,
+                // callbackUrl: "/dashboard"
+              })
+
+            }}>
               <ModalBody>
                 <Input
                   autoFocus
+                  id="username"
+                  name="username"
                   label="Username"
                   placeholder="Enter your username"
                   variant="bordered"
-                  
+                  autoComplete="off"
                 />
                 <Input
+                  id="password"
+                  name="password"
                   label="Password"
                   placeholder="Enter your password"
                   type="password"
@@ -34,11 +50,12 @@ export default function Login() {
                 <Button color="danger" variant="flat" onPress={() => router.push('/')}>
                   Close
                 </Button>
-                <Button color="primary" >
+                <Button color="primary" type="submit">
                   Sign in
                 </Button>
               </ModalFooter>
-            </>
+            </form>
+          </>
         </ModalContent>
       </Modal>
     </>
