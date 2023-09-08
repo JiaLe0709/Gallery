@@ -6,6 +6,8 @@ import { signIn } from 'next-auth/react'
 export default function Login() {
   const router = useRouter()
   const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState(false)
+
   return (
     <>
       <Modal
@@ -16,19 +18,31 @@ export default function Login() {
         <ModalContent>
           <>
             <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
-            <form onSubmit={async (e) => {
-              e.preventDefault()
-              setSubmitting(true)
-              await signIn('credentials', {
-                username: e.currentTarget.username.value,
-                password: e.currentTarget.password.value,
-                redirect: false,
-                // callbackUrl: "/dashboard"
-              })
+            <form
+              onSubmit={
+                async (e) => {
+                  e.preventDefault();
+                  setSubmitting(true);
 
-            }}>
-              <ModalBody>
+                  const username = e.currentTarget.username.value;
+                  const password = e.currentTarget.password.value;
+
+                  const result = await signIn('credentials', {
+                    username,
+                    password,
+                    redirect: false,
+                    // callbackUrl: "/dashboard"
+                  });
+
+                  if (result.error) {
+                    setSubmitting(false)
+                    setError('Failed to login.');
+                  }
+                }}>
+              <ModalBody>  
+                  {error && <p>{error}</p>}
                 <Input
+                  required
                   autoFocus
                   id="username"
                   name="username"
@@ -38,6 +52,7 @@ export default function Login() {
                   autoComplete="off"
                 />
                 <Input
+                  required
                   id="password"
                   name="password"
                   label="Password"

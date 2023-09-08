@@ -9,7 +9,7 @@ const Protected = () => {
   const { status, data } = useSession();
 
   useEffect(() => {
-    if (status === "unauthenticated") Router.replace("/auth/login");
+    if (status === "unauthenticated") Router.replace("/login");
   }, [status]);
 
   if (status === "authenticated")

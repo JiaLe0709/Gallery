@@ -1,6 +1,6 @@
 {
   "name": "gallery",
-  "version": "v1.0.8",
+  "version": "v1.0.9",
   "homepage": "https://github.com/JiaLe0709/Gallery.git",
   "license": "MIT",
   "repository": {
@@ -21,6 +21,9 @@
   "dependencies": {
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
+    "@next/mdx": "^13.4.19",
     "@nextui-org/react": "^2.1.7",
     "@types/flat": "^5.0.2",
     "class-variance-authority": "^0.7.0",
@@ -38,6 +41,7 @@
     "next-cloudinary": "^4.18.1",
     "next-themes": "^0.2.1",
     "nprogress": "^0.2.0",
+    "prisma": "^5.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hooks-global-state": "^2.0.0",
